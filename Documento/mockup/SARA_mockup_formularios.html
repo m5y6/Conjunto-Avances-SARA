@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SARA — Sistema de Asistencia de Reglamentos Académicos</title>
+    <link rel="stylesheet" href="sara_styles.css">
+</head>
+<body>
+
+    <header class="sara-nav">
+        <div style="display:flex; align-items:center; gap:15px;">
+            <div style="background:white; color:var(--duoc-blue); width:35px; height:35px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800;">S</div>
+            <div>
+                <h1 style="font-size:18px;">SARA</h1>
+                <p style="font-size:10px; opacity:0.8; text-transform:uppercase;">Asistente Inteligente Duoc UC</p>
+            </div>
+        </div>
+        <div style="text-align:right;">
+            <p style="font-size:13px; font-weight:600;">Benjamín Cerda</p>
+            <p style="font-size:11px; opacity:0.9;">Ing. Informática | Maipú</p>
+        </div>
+    </header>
+
+    <nav class="tab-container">
+        <button class="tab-btn active" onclick="openTab(event, 'chat')">Chat Asistente</button>
+        <button class="tab-btn" onclick="openTab(event, 'login')">Login</button>
+        <button class="tab-btn" onclick="openTab(event, 'perfil')">Mi Perfil</button>
+        <button class="tab-btn" onclick="openTab(event, 'valoracion')">Valoración</button>
+        <button class="tab-btn" onclick="openTab(event, 'admin')">Admin (Carga S3)</button>
+        <button class="tab-btn" onclick="openTab(event, 'dashboard')">Dashboard Precisión</button>
+    </nav>
+
+    <section id="chat" class="screen active">
+        <div class="card">
+            <div class="chat-box">
+                <div class="messages">
+                    <div class="bubble bot">¡Hola! Soy SARA. ¿Tienes dudas sobre el reglamento o procesos de financiamiento?</div>
+                    <div class="bubble user">¿Cuántas inasistencias puedo tener?</div>
+                    <div class="bubble bot">
+                        El máximo es de un <strong>25% de inasistencias</strong>. Superar este límite implica reprobación automática.
+                        <span class="source">Fuente: Reglamento Académico 2025, Art. 14.</span>
+                    </div>
+                </div>
+                <div style="padding:1rem; border-top:1px solid #EEE; display:flex; gap:10px;">
+                    <input type="text" placeholder="Pregunta sobre reglamentos..." style="flex:1; border-radius:20px; padding:8px 15px; border:1px solid #DDD;">
+                    <button class="btn-duoc" style="border-radius:20px;">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="login" class="screen">
+        <div class="card" style="max-width:400px; margin:auto; text-align:center;">
+            <h2 style="margin-bottom:1.5rem;">Acceso Institucional</h2>
+            <div class="field" style="text-align:left;">
+                <label>Correo Duoc UC</label>
+                <input type="email" value="benjamin.cerda@duocuc.cl">
+            </div>
+            <div class="field" style="text-align:left;">
+                <label>Contraseña</label>
+                <input type="password" value="********">
+            </div>
+            <button class="btn-duoc" style="width:100%;">Iniciar Sesión</button>
+        </div>
+    </section>
+
+    <section id="perfil" class="screen">
+        <div class="card">
+            <h2 class="card-title">Datos del Estudiante</h2>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                <div class="field"><label>RUT</label><input type="text" value="22.041.600-3" readonly></div>
+                <div class="field"><label>Sede</label><input type="text" value="Maipú" readonly></div>
+                <div class="field"><label>Jornada</label><input type="text" value="Vespertina" readonly></div>
+                <div class="field"><label>Semestre</label><input type="text" value="5to Semestre" readonly></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="valoracion" class="screen">
+        <div class="card">
+            <h2 class="card-title">Valorar Calidad de Respuesta</h2>
+            <p style="font-size:14px; margin-bottom:1rem;">¿Fue útil la información entregada por SARA?</p>
+            <div class="stars">★★★★☆ <span style="font-size:14px; color:var(--text-muted);">(4/5)</span></div>
+            <div class="field" style="margin-top:1.5rem;">
+                <label>Reportar error en reglamento (opcional)</label>
+                <textarea placeholder="Si la respuesta fue incorrecta, indícanos por qué..."></textarea>
+            </div>
+            <button class="btn-duoc">Enviar Comentarios</button>
+        </div>
+    </section>
+
+    <section id="admin" class="screen">
+        <div class="card">
+            <h2 class="card-title">Carga de Reglamentos al RAG (Amazon S3)</h2>
+            <div style="border:2px dashed #CBD5E0; padding:2rem; text-align:center; border-radius:10px;">
+                <p>Arrastra archivos PDF aquí para indexar en la base vectorial</p>
+                <button class="btn-duoc" style="margin-top:1rem; background:var(--duoc-red);">Seleccionar PDF</button>
+            </div>
+            <div style="margin-top:1.5rem;">
+                <p style="font-size:12px;">Procesando: Reglamento_Financiamiento_2026.pdf (75%)</p>
+                <div class="progress-bar"><div class="progress-fill" style="width:75%;"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dashboard" class="screen">
+        <div class="metrics-grid">
+            <div class="metric"><span class="metric-val">98%</span>Precisión RAG</div>
+            <div class="metric"><span class="metric-val">1.2s</span>Latencia AWS</div>
+            <div class="metric"><span class="metric-val">0%</span>Tasa Alucinación</div>
+        </div>
+        <div class="card" style="margin-top:1.5rem;">
+            <h2 class="card-title">Configuración del Modelo (Claude 3 - Bedrock)</h2>
+            <div class="field">
+                <label>System Prompt Actual</label>
+                <textarea rows="3" readonly>Eres SARA. Responde solo basándote en los documentos de Duoc UC. Si la respuesta no está en el contexto, no inventes.</textarea>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, screen, tablinks;
+            screen = document.getElementsByClassName("screen");
+            for (i = 0; i < screen.length; i++) { screen[i].classList.remove("active"); }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>

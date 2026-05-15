@@ -1,0 +1,239 @@
+/* ============================================================
+   SARA — Sistema de Asistencia de Reglamentos Académicos
+   Identidad Visual Institucional Duoc UC
+   ============================================================ */
+
+:root {
+  /* Paleta Corporativa Duoc UC */
+  --duoc-blue: #003087;
+  --duoc-red: #E53935;
+  --duoc-yellow: #FFA400;
+  
+  /* Colores de Interfaz */
+  --bg-app: #F4F7FA;
+  --bg-card: #FFFFFF;
+  --text-main: #1C2B39;
+  --text-muted: #5E7185;
+  --border-color: #E2E8F0;
+  --success: #2DCE89;
+  
+  /* Dimensiones */
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+/* --- Header Institucional --- */
+.sara-header {
+  background: var(--duoc-blue);
+  color: white;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.brand-box { display: flex; align-items: center; gap: 12px; }
+.brand-logo {
+  background: white; color: var(--duoc-blue);
+  width: 36px; height: 36px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 20px;
+}
+.brand-titles h1 { font-size: 18px; font-weight: 600; letter-spacing: 0.5px; }
+.brand-titles p { font-size: 11px; opacity: 0.8; text-transform: uppercase; }
+
+/* --- Navegación por Pestañas --- */
+.nav-container {
+  background: white;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  padding: 0 1.5rem;
+  overflow-x: auto;
+}
+
+.nav-tab {
+  padding: 1rem 1.2rem;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.2s;
+}
+
+.nav-tab.active {
+  color: var(--duoc-blue);
+  border-bottom-color: var(--duoc-blue);
+}
+
+/* --- Pantallas y Contenedores --- */
+.screen { display: none; padding: 1.5rem; max-width: 900px; margin: 0 auto; }
+.screen.active { display: block; animation: fadeIn 0.3s ease; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-title { font-size: 16px; font-weight: 600; margin-bottom: 1rem; color: var(--duoc-blue); }
+
+/* --- Chat RAG (Optimizado) --- */
+.chat-container {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  background: #F8FAFC;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.chat-messages { flex: 1; padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; }
+
+.bubble { max-width: 85%; padding: 0.8rem 1rem; border-radius: 12px; font-size: 14px; }
+
+.bubble.bot {
+  background: white;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 2px;
+}
+
+.bubble.user {
+  background: var(--duoc-blue);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+}
+
+.source-tag {
+  display: block;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #EDF2F7;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* --- Admin & Métricas --- */
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+.metric-box { text-align: center; padding: 1rem; background: var(--bg-app); border-radius: var(--radius-md); }
+.metric-value { font-size: 24px; font-weight: 700; color: var(--duoc-blue); }
+.metric-label { font-size: 12px; color: var(--text-muted); }
+
+/* --- Inputs y Botones --- */
+.field { margin-bottom: 1rem; }
+.field label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
+.field input, .field select, .field textarea {
+  width: 100%; padding: 0.7rem; border: 1px solid var(--border-color);
+  border-radius: var(--radius-md); font-size: 14px;
+}
+
+.btn-duoc {
+  background: var(--duoc-blue); color: white; border: none;
+  padding: 0.8rem 1.5rem; border-radius: var(--radius-md);
+  font-weight: 600; cursor: pointer; transition: 0.2s;
+}
+.btn-duoc:hover { background: #002366; }
+
+/* UI Extras */
+.badge { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.badge-active { background: #E6FFFA; color: #234E52; }
+.progress-bar { height: 6px; background: #E2E8F0; border-radius: 3px; overflow: hidden; margin: 10px 0; }
+.progress-fill { background: var(--duoc-blue); height: 100%; }
+
+/* ============================================================
+   SARA — SISTEMA MAESTRO DE ESTILOS (UNIFICADO)
+   ============================================================ */
+:root {
+  --duoc-blue: #003087;
+  --duoc-red: #E53935;
+  --bg-app: #F0F2F5;
+  --bg-card: #FFFFFF;
+  --text-main: #1C2B39;
+  --text-muted: #5E7185;
+  --border-color: #D1D5DB;
+  --radius: 10px;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+body { background-color: var(--bg-app); color: var(--text-main); }
+
+/* --- Navegación --- */
+.sara-nav {
+  background: var(--duoc-blue); color: white; padding: 1rem 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.tab-container {
+  background: white; display: flex; padding: 0 2rem; 
+  border-bottom: 1px solid var(--border-color); overflow-x: auto;
+}
+.tab-btn {
+  padding: 1rem 1.5rem; border: none; background: none; cursor: pointer;
+  font-size: 14px; font-weight: 500; color: var(--text-muted);
+  border-bottom: 3px solid transparent; transition: 0.2s;
+}
+.tab-btn.active { color: var(--duoc-blue); border-bottom-color: var(--duoc-blue); }
+
+/* --- Contenedores --- */
+.screen { display: none; padding: 2rem; max-width: 1000px; margin: 0 auto; }
+.screen.active { display: block; animation: fadeIn 0.3s; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.card {
+  background: var(--bg-card); border-radius: var(--radius);
+  padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+/* --- Chat & RAG UI --- */
+.chat-box {
+  height: 450px; background: #F9FAFB; border-radius: var(--radius);
+  display: flex; flex-direction: column; border: 1px solid var(--border-color);
+}
+.messages { flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; }
+.bubble { max-width: 80%; padding: 0.8rem; border-radius: 12px; font-size: 14px; }
+.bubble.bot { background: white; border: 1px solid var(--border-color); align-self: flex-start; }
+.bubble.user { background: var(--duoc-blue); color: white; align-self: flex-end; }
+.source { font-size: 11px; color: var(--text-muted); margin-top: 5px; display: block; border-top: 1px solid #EEE; padding-top: 5px; }
+
+/* --- Admin Dashboard --- */
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+.metric { text-align: center; padding: 1rem; background: #F8FAFC; border-radius: 8px; border: 1px solid #E2E8F0; }
+.metric-val { display: block; font-size: 24px; font-weight: 700; color: var(--duoc-blue); }
+
+/* --- Form Elements --- */
+.field { margin-bottom: 1rem; }
+.field label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--text-muted); }
+.field input, .field select, .field textarea {
+  width: 100%; padding: 0.6rem; border: 1px solid var(--border-color); border-radius: 6px;
+}
+.btn-duoc {
+  background: var(--duoc-blue); color: white; border: none; padding: 0.7rem 1.5rem;
+  border-radius: 6px; cursor: pointer; font-weight: 600;
+}
+
+/* --- Valoración (Estrellas) --- */
+.stars { color: #FFD700; font-size: 1.5rem; cursor: pointer; }
+.progress-bar { height: 8px; background: #E5E7EB; border-radius: 4px; overflow: hidden; margin: 10px 0; }
+.progress-fill { background: var(--duoc-blue); height: 100%; }

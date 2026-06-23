@@ -12,6 +12,10 @@ Este repositorio contiene los avances realizados para el proyecto **SARA**. El p
 - **HTML** (36%)
 - **Python** (21.6%)
 
+## Repositorios del proyecto
+- https://github.com/m5y6/SARA_backend
+- https://github.com/m5y6/SARA_frontend
+
 ## Integrantes del Grupo
 
 - Benjamin Cerda
